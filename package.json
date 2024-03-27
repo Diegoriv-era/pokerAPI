@@ -1,0 +1,31 @@
+{
+  "name": "poker_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api_server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csrf": "^3.0.6",
+    "curl": "^0.1.4",
+    "dateformat": "^3.0.3",
+    "dotenv": "^4.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "kcors": "^2.2.1",
+    "knex": "^0.13.0",
+    "koa": "^2.15.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-bunyan-logger": "^2.0.0",
+    "koa-compress": "^2.0.0",
+    "koa-jwt": "^3.3.2",
+    "koa-router": "^7.3.0",
+    "lodash": "^4.17.4",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
