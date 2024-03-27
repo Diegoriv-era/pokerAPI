@@ -25,6 +25,9 @@ loginRouter.get('/check/all', LoginController.allUsers);
 // Route for creating a user (GET request)
 loginRouter.get('/create/:userName/:userPassword/:avatar', LoginController.createUser);
 
+// Route for creating a user (GET request)
+loginRouter.get('/get/:userName', LoginController.changeColor);
+
 // Register routers
 router.use('', loginRouter.routes());
 
