@@ -9,9 +9,9 @@ const updateMoney = async (ctx) => {
     
     try {
         const query = `UPDATE users
-                    SET money = ?,
-                    SET avatar = ?
-                     WHERE userName = ?`;
+                    SET money = ?, SET avatar = ?
+                     WHERE userName = ?
+                     `;
 
         await dbConnection.query({
             sql: query,
