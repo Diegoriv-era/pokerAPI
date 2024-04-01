@@ -9,13 +9,12 @@ const updateMoney = async (ctx) => {
     
     try {
         const query = `UPDATE users
-                    SET money = ?, SET avatar = ?
-                     WHERE userName = ?
-                     `;
+                       SET money = ?, avatar = ?
+                       WHERE userName = ?`;
 
         await dbConnection.query({
             sql: query,
-            values: [money, userName, avatar]
+            values: [money, avatar, userName]
         });
 
         console.log("userMoney updated successfully");
@@ -38,6 +37,7 @@ const updateMoney = async (ctx) => {
         };
     }
 };
+
 
 module.exports = {
     updateMoney,
