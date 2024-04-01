@@ -33,7 +33,7 @@ loginRouter.get('/get/:userName', LoginController.changeColor);
 
 
 //update the moneyy attribute for the given user
-moneyRouter.get('/update/:money/:userName', moneyController.updateMoney);
+moneyRouter.get('/update/:money/:userName/:avatar', moneyController.updateMoney);
 
 
 
