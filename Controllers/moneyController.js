@@ -5,16 +5,17 @@ require('dotenv').config();
 
 
 const updateMoney = async (ctx) => {
-    const { userName, money } = ctx.params;
-
+    const { userName, money, avatar } = ctx.params;
+    
     try {
         const query = `UPDATE users
-                    SET money = ?
+                    SET money = ?,
+                    SET avatar = ?
                      WHERE userName = ?`;
 
         await dbConnection.query({
             sql: query,
-            values: [money, userName]
+            values: [money, userName, avatar]
         });
 
         console.log("userMoney updated successfully");
@@ -23,7 +24,8 @@ const updateMoney = async (ctx) => {
             status: "OK",
             user: {
                 userName: userName,
-                money: money
+                money: money,
+                avatar: avatar
             }
         };
     } catch (error) {
