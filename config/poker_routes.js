@@ -2,7 +2,7 @@ const Authorize = require('../Middleware/Authorize.js');
 const VerifyJWT = require('../Middleware/VerifyJWT.js');
 const LoginController = require('../Controllers/LoginController.js');
 const moneyController = require('../Controllers/moneyController.js');
-
+const friendController = require('../Controllers/FriendController.js');
 const router = require('koa-router')({
     prefix: '/api/v1'
 });
@@ -22,6 +22,10 @@ const loginRouter = require('koa-router')({
 const moneyRouter = require('koa-router')({
     prefix: '/money'
 });
+const friendRouter = require('koa-router')({
+    prefix: '/friend'
+});
+
 // Route for user authorization
 loginRouter.get('/:userName', LoginController.authorizeUser);
 // Route for all users
@@ -37,16 +41,26 @@ moneyRouter.get('/update/:money/:userName/:avatar', moneyController.updateMoney)
 
 
 
+//Friend routes
+
+friendRouter.get('/show/:userName1/:userName2/:rStatus', friendController.showFriends);
+// Route for all users
+friendRouter.get('/search/:userName', friendController.searchFriends);
+// Route for creating a user (GET request)
+friendRouter.get('/add/:userID1/:userName1/:userID2/:userName2/:rStatus', friendController.addFriend);
+// Route for creating a user (GET request)
+friendRouter.get('/accept/:userID1/:userID2', friendController.acceptRequest);
+friendRouter.get('/reject/:userID1/:userID2', friendController.rejectRequest);
 
 // Register routers
 router.use(
     '',
     loginRouter.routes(),
     moneyRouter.routes(),
+    friendRouter.routes(),
 );
 
 
-moneyRouter.get('/update/:money/:userName', moneyController.updateMoney);
 
 
 module.exports = function (app) {
