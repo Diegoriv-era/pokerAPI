@@ -37,11 +37,12 @@ const searchFriends = async (ctx) => {
     return new Promise((resolve, reject) => {
         let query = `SELECT * 
                     FROM users
-                    WHERE userName LIKE '%?%'`;
+                    WHERE userName LIKE ?`;
+        let searchTerm = `%${ctx.params.userName}%`; // Concatenate wildcard characters with search term
         dbConnection.query(
             {
                 sql: query,
-                values: [ctx.params.userName]
+                values: [searchTerm]
             },
             (error, tuples) => {
                 if (error) {
@@ -62,6 +63,7 @@ const searchFriends = async (ctx) => {
         };
     });
 };
+
 
 const addFriend = async (ctx) => {
     //const { userName, userPassword, avatar } = ctx.params;
