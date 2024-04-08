@@ -3,6 +3,7 @@ const VerifyJWT = require('../Middleware/VerifyJWT.js');
 const LoginController = require('../Controllers/LoginController.js');
 const moneyController = require('../Controllers/moneyController.js');
 const friendController = require('../Controllers/FriendController.js');
+const avatarController = require('../Controllers/AvatarController.js');
 const router = require('koa-router')({
     prefix: '/api/v1'
 });
@@ -25,7 +26,9 @@ const moneyRouter = require('koa-router')({
 const friendRouter = require('koa-router')({
     prefix: '/friend'
 });
-
+const avatarRouter = require('koa-router')({
+    prefix: '/avatar'
+});
 // Route for user authorization
 loginRouter.get('/:userName', LoginController.authorizeUser);
 // Route for all users
@@ -52,12 +55,19 @@ friendRouter.get('/add/:userID1/:userName1/:userID2/:userName2/:rStatus', friend
 friendRouter.get('/accept/:userID1/:userID2', friendController.acceptRequest);
 friendRouter.get('/reject/:userID1/:userID2', friendController.rejectRequest);
 
+
+//AVATAR ROUTEs!!
+avatarRouter.get('/search/:userName', avatarController.showAvatars);
+// Route for creating a user (GET request)
+avatarRouter.get('/insert/:userID/:userName/:avatar', avatarController.insertAvatars);
+
 // Register routers
 router.use(
     '',
     loginRouter.routes(),
     moneyRouter.routes(),
     friendRouter.routes(),
+    avatarRouter.routes(),
 );
 
 
